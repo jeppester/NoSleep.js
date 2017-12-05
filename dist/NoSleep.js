@@ -109,8 +109,8 @@ var NoSleep = function () {
       this.noSleepVideo.setAttribute('src', mediaURI || mediaFile);
 
       this.noSleepVideo.addEventListener('timeupdate', function (e) {
-        if (this.noSleepVideo.currentTime > 0.5) {
-          this.noSleepVideo.currentTime = Math.random();
+        if (this.noSleepVideo.currentTime > this.noSleepVideo.duration - 2) {
+          this.noSleepVideo.currentTime = Math.random() * this.noSleepVideo.duration;
         }
       }.bind(this));
     }
