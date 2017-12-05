@@ -7,7 +7,7 @@ const oldIOS = typeof navigator !== 'undefined' && parseFloat(
 ) < 10 && !window.MSStream
 
 class NoSleep {
-  constructor () {
+  constructor (mediaURI = null) {
     if (oldIOS) {
       this.noSleepTimer = null
     } else {
@@ -15,7 +15,7 @@ class NoSleep {
       this.noSleepVideo = document.createElement('video')
 
       this.noSleepVideo.setAttribute('playsinline', '')
-      this.noSleepVideo.setAttribute('src', mediaFile)
+      this.noSleepVideo.setAttribute('src', mediaURI || mediaFile)
 
       this.noSleepVideo.addEventListener('timeupdate', function (e) {
         if (this.noSleepVideo.currentTime > 0.5) {

@@ -8,7 +8,7 @@
 		exports["NoSleep"] = factory();
 	else
 		root["NoSleep"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -92,6 +92,8 @@ var oldIOS = typeof navigator !== 'undefined' && parseFloat(('' + (/CPU.*OS ([0-
 
 var NoSleep = function () {
   function NoSleep() {
+    var mediaURI = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
     _classCallCheck(this, NoSleep);
 
     if (oldIOS) {
@@ -101,7 +103,7 @@ var NoSleep = function () {
       this.noSleepVideo = document.createElement('video');
 
       this.noSleepVideo.setAttribute('playsinline', '');
-      this.noSleepVideo.setAttribute('src', mediaFile);
+      this.noSleepVideo.setAttribute('src', mediaURI || mediaFile);
 
       this.noSleepVideo.addEventListener('timeupdate', function (e) {
         if (this.noSleepVideo.currentTime > 0.5) {
